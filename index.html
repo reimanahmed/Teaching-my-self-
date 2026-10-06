@@ -1,1 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iraqi Educational Platform - Primary Education</title>
+    <style>
+        /* CSS Reset & Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header & Navigation Bar */
+        header {
+            background-color: #007a3d; /* Iraqi Green Theme Accent */
+            color: #ffffff;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            color: #d1e7dd;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffce00; /* Warm Accent */
+        }
+
+        /* Hero / Welcome Section */
+        .hero {
+            background-color: #ffffff;
+            border-bottom: 3px solid #ce1126; /* Accent Red */
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            color: #007a3d;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #555555;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Main Content & Section Cards */
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+        }
+
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid #007a3d;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+        }
+
+        .card-student { border-top-color: #007a3d; }
+        .card-teacher { border-top-color: #ce1126; }
+        .card-admin   { border-top-color: #333333; }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #222222;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #666666;
+            margin-bottom: 1.5rem;
+        }
+
+        .card ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.2rem;
+            color: #444444;
+        }
+
+        .card ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            text-align: center;
+            background-color: #007a3d;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #005a2d;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222222;
+            color: #aaaaaa;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design Adjustments */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Iraqi Primary Education Portal</h1>
+                <p>Ministry of Education - Digital Learning Platform</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#students">Students</a></li>
+                    <li><a href="#teachers">Teachers</a></li>
+                    <li><a href="#administration">Administration</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Welcome / Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h2>Welcome to the Iraqi National Primary Learning Hub</h2>
+            <p>Empowering young learners across Iraq with accessible, high-quality primary education resources, interactive learning tools, and school management systems.</p>
+        </div>
+    </section>
+
+    <!-- Main Content - Portals -->
+    <main>
+        <div class="portal-grid">
+            
+            <!-- Students Section -->
+            <article id="students" class="card card-student">
+                <div>
+                    <h3>Student Corner</h3>
+                    <p>Access interactive lessons, educational videos, and fun activities designed for primary school grade levels.</p>
+                    <ul>
+                        <li>Interactive Curriculum Lessons</li>
+                        <li>Homework & Assignments</li>
+                        <li>Educational Games & Quizzes</li>
+                    </ul>
+                </div>
+                <a href="#students-portal" class="btn">Enter Student Portal</a>
+            </article>
+
+            <!-- Teachers Section -->
+            <article id="teachers" class="card card-teacher">
+                <div>
+                    <h3>Teachers Hub</h3>
+                    <p>Tools and resources for primary school educators to manage classrooms, grade assignments, and upload teaching materials.</p>
+                    <ul>
+                        <li>Curriculum Guides & Lesson Plans</li>
+                        <li>Gradebook & Progress Tracking</li>
+                        <li>Virtual Classroom Tools</li>
+                    </ul>
+                </div>
+                <a href="#teachers-portal" class="btn">Enter Teacher Portal</a>
+            </article>
+
+            <!-- Administration Section -->
+            <article id="administration" class="card card-admin">
+                <div>
+                    <h3>Administration Portal</h3>
+                    <p>Centralized system for school administrators to manage registrations, staff records, and official announcements.</p>
+                    <ul>
+                        <li>Student Enrollment & Records</li>
+                        <li>Staff & Schedule Management</li>
+                        <li>School Analytics & Reports</li>
+                    </ul>
+                </div>
+                <a href="#admin-portal" class="btn">Enter Admin Portal</a>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Iraqi Primary Educational Platform. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
 
