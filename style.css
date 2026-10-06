@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iraqi Educational Platform - Primary Education</title>
+    <style>
+        /* Import Playful & Professional Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+        /* Color Palette & Custom Properties */
+        :root {
+            /* Palette: Child-friendly yet professional */
+            --primary-green: #0d9488;    /* Soft Teal Green */
+            --primary-green-hover: #0f766e;
+            --accent-yellow: #f59e0b;   /* Warm Sunshine Yellow */
+            --accent-yellow-hover: #d97706;
+            --student-blue: #3b82f6;    /* Playful Soft Blue */
+            --teacher-coral: #ff6b6b;   /* Warm Energetic Coral/Red */
+            --admin-purple: #8b5cf6;    /* Friendly Deep Violet */
+            
+            --bg-neutral: #f8fafc;      /* Soft Light Gray-Blue Background */
+            --text-dark: #1e293b;       /* Soft Slate Dark Text */
+            --text-muted: #64748b;      /* Muted Gray Text */
+            --white: #ffffff;
+            
+            --radius-large: 24px;
+            --radius-medium: 16px;
+            --radius-small: 12px;
+            
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 20px 35px -10px rgba(0, 0, 0, 0.12), 0 10px 15px -5px rgba(0, 0, 0, 0.04);
+            
+            --transition-smooth: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* CSS Reset & Body Setup */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-neutral);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(13, 148, 136, 0.05) 0%, transparent 20%);
+            color: var(--text-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Typography Defaults */
+        h1, h2, h3 {
+            font-family: 'Fredoka', sans-serif;
+            letter-spacing: 0.2px;
+        }
+
+        /* Header & Navigation Bar */
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #f1f5f9;
+            box-shadow: var(--shadow-sm);
+            padding: 1.25rem 2rem;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            color: var(--primary-green);
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 0.75rem;
+            background-color: #f1f5f9;
+            padding: 0.4rem;
+            border-radius: 50px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            display: block;
+            transition: all 0.25s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--white);
+            color: var(--primary-green);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Hero / Welcome Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+            color: var(--white);
+            padding: 4.5rem 2rem;
+            text-align: center;
+            border-radius: 0 0 40px 40px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        /* Subtle decorative background shapes for a friendly feel */
+        .hero::before, .hero::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .hero::before { width: 300px; height: 300px; top: -100px; left: -50px; }
+        .hero::after { width: 200px; height: 200px; bottom: -80px; right: 5%; }
+
+        .hero-container {
+            max-width: 760px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            line-height: 1.25;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #ccfbf1;
+            font-weight: 400;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Main Content & Portal Cards Grid */
+        main {
+            max-width: 1200px;
+            margin: 3.5rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--white);
+            border-radius: var(--radius-large);
+            padding: 2.25rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-md);
+            border: 2px solid transparent;
+            transition: transform 0.35s var(--transition-smooth), 
+                        box-shadow 0.35s ease, 
+                        border-color 0.35s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Portal Specific Card Accents & Colors */
+        .card-student {
+            background: linear-gradient(180deg, #ffffff 70%, #eff6ff 100%);
+            border-top: 6px solid var(--student-blue);
+        }
+        .card-student:hover { border-color: var(--student-blue); }
+
+        .card-teacher {
+            background: linear-gradient(180deg, #ffffff 70%, #fff1f2 100%);
+            border-top: 6px solid var(--teacher-coral);
+        }
+        .card-teacher:hover { border-color: var(--teacher-coral); }
+
+        .card-admin {
+            background: linear-gradient(180deg, #ffffff 70%, #f5f3ff 100%);
+            border-top: 6px solid var(--admin-purple);
+        }
+        .card-admin:hover { border-color: var(--admin-purple); }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .card ul {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        /* Friendly Custom Bullet Points */
+        .card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: -1px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-student ul li::before { background-color: #dbeafe; color: var(--student-blue); }
+        .card-teacher ul li::before { background-color: #ffe4e6; color: var(--teacher-coral); }
+        .card-admin ul li::before   { background-color: #ede9fe; color: var(--admin-purple); }
+
+        /* Modern Friendly Button Component */
+        .btn {
+            display: block;
+            text-align: center;
+            padding: 0.85rem 1.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.05rem;
+            letter-spacing: 0.3px;
+            color: var(--white);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        /* Button Colors Matched to Cards */
+        .card-student .btn { background-color: var(--student-blue); }
+        .card-student .btn:hover { background-color: #2563eb; box-shadow: 0 8px 15px rgba(59, 130, 246, 0.3); }
+
+        .card-teacher .btn { background-color: var(--teacher-coral); }
+        .card-teacher .btn:hover { background-color: #ff5252; box-shadow: 0 8px 15px rgba(255, 107, 107, 0.3); }
+
+        .card-admin .btn { background-color: var(--admin-purple); }
+        .card-admin .btn:hover { background-color: #7c3aed; box-shadow: 0 8px 15px rgba(139, 92, 246, 0.3); }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--white);
+            border-top: 2px solid #f1f5f9;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: auto;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Responsive Mobile Adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            nav ul {
+                width: 100%;
+                justify-content: center;
+            }
+
+            nav a {
+                padding: 0.5rem 0.9rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 3rem 1.25rem;
+                border-radius: 0 0 28px 28px;
+            }
+
+            .hero h2 {
+                font-size: 1.85rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            main {
+                margin: 2rem auto;
+                padding: 0 1rem;
+            }
+
+            .card {
+                padding: 1.75rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Iraqi Primary Education Portal</h1>
+                <p>Ministry of Education - Digital Learning Platform</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#students">Students</a></li>
+                    <li><a href="#teachers">Teachers</a></li>
+                    <li><a href="#administration">Administration</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Welcome / Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h2>Welcome to the Iraqi National Primary Learning Hub</h2>
+            <p>Empowering young learners across Iraq with accessible, high-quality primary education resources, interactive learning tools, and school management systems.</p>
+        </div>
+    </section>
+
+    <!-- Main Content - Portals -->
+    <main>
+        <div class="portal-grid">
+            
+            <!-- Students Section -->
+            <article id="students" class="card card-student">
+                <div>
+                    <h3>Student Corner</h3>
+                    <p>Access interactive lessons, educational videos, and fun activities designed for primary school grade levels.</p>
+                    <ul>
+                        <li>Interactive Curriculum Lessons</li>
+                        <li>Homework & Assignments</li>
+                        <li>Educational Games & Quizzes</li>
+                    </ul>
+                </div>
+                <a href="#students-portal" class="btn">Enter Student Portal</a>
+            </article>
+
+            <!-- Teachers Section -->
+            <article id="teachers" class="card card-teacher">
+                <div>
+                    <h3>Teachers Hub</h3>
+                    <p>Tools and resources for primary school educators to manage classrooms, grade assignments, and upload teaching materials.</p>
+                    <ul>
+                        <li>Curriculum Guides & Lesson Plans</li>
+                        <li>Gradebook & Progress Tracking</li>
+                        <li>Virtual Classroom Tools</li>
+                    </ul>
+                </div>
+                <a href="#teachers-portal" class="btn">Enter Teacher Portal</a>
+            </article>
+
+            <!-- Administration Section -->
+            <article id="administration" class="card card-admin">
+                <div>
+                    <h3>Administration Portal</h3>
+                    <p>Centralized system for school administrators to manage registrations, staff records, and official announcements.</p>
+                    <ul>
+                        <li>Student Enrollment & Records</li>
+                        <li>Staff & Schedule Management</li>
+                        <li>School Analytics & Reports</li>
+                    </ul>
+                </div>
+                <a href="#admin-portal" class="btn">Enter Admin Portal</a>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Iraqi Primary Educational Platform. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
