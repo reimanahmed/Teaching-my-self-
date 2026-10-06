@@ -73,3 +73,29 @@ function submitAnswer(questionId, selectedAnswer, correctAnswer, submitButton = 
 document.addEventListener('DOMContentLoaded', () => {
     updateScoreDisplay();
 });
+// Function to update the Total Points display in the DOM
+function updateTotalPointsDisplay() {
+  const pointsElement = document.getElementById('total-points');
+  if (pointsElement) {
+    // Retrieve total points from localStorage, default to 0 if not found
+    const currentPoints = localStorage.getItem('totalPoints') || 0;
+    pointsElement.textContent = currentPoints;
+  }
+}
+
+// Function to call whenever a student earns/changes points in the quiz
+function addPoints(pointsEarned) {
+  let currentPoints = parseInt(localStorage.getItem('totalPoints') || '0', 10);
+  currentPoints += pointsEarned;
+  
+  // Save updated total to localStorage
+  localStorage.setItem('totalPoints', currentPoints);
+  
+  // Automatically update the UI
+  updateTotalPointsDisplay();
+}
+
+// Automatically load and display points when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  updateTotalPointsDisplay();
+});
